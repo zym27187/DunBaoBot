@@ -65,12 +65,17 @@ def check_pic():
         return False
     return True
 
+
 def get_digest():
     url = 'https://api.j4u.ink/proxy/remote/moyu.json'  # 返回json
     data = {'format': 'json'}
     r = requests.get(url, data)
     all = r.json()
-    return all['data']['articles'][1]['digest']
+    result = all['data']['articles'][1]['digest']
+    if result == None:
+        return ''
+    return result
+
 
 @sv.scheduled_job('cron', hour='10', minute='0', day_of_week='0-6')
 async def send_news():

@@ -60,10 +60,12 @@ def check_pic():
 @sv.scheduled_job('cron', hour='9', minute='30', day_of_week='0-6')
 async def send_news():
     if check_pic() == False:
+        bot = get_bot()
         await bot.send_group_msg('图片大小异常，请检查')
     else:
         code = get_pic()
         if code:
+            bot = get_bot()
             await bot.send_group_msg(code)
         else:
             bot = get_bot()
