@@ -38,7 +38,7 @@ def get_group_list():
 
 
 def get_pic():
-    url = 'https://api.j4u.ink/proxy/remote/moyu.json'  # 返回json
+    url = 'https://api.j4u.ink/v1/store/other/proxy/remote/moyu.json'  # 返回json
     data = {'format': 'json'}
     r = requests.get(url, data)
     all = r.json()
@@ -67,11 +67,11 @@ def check_pic():
 
 
 def get_digest():
-    url = 'https://api.j4u.ink/proxy/remote/moyu.json'  # 返回json
+    url = 'https://api.j4u.ink/v1/store/other/proxy/remote/moyu.json'  # 返回json
     data = {'format': 'json'}
     r = requests.get(url, data)
     all = r.json()
-    result = all['data']['articles'][1]['digest']
+    result = all['data']['articles'][2]['digest']
     if result == None:
         return ''
     return result
